@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANIMACIÓN 4D</title>
+<meta name="description" content="Animación 4D del proceso constructivo de una expansión de oficinas (video, 2:20).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d1116">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="ANIMACIÓN 4D">
+<meta property="og:description" content="Video del proceso constructivo de una expansión de oficinas · 2:20">
+<meta property="og:url" content="https://dominic-soto.github.io/ANIMACION-4D/">
+<meta property="og:image" content="https://dominic-soto.github.io/ANIMACION-4D/preview.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ef8a23'/%3E%3Cpath d='M25 18l22 14-22 14z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+  :root { color-scheme: dark; --fondo: #0d1116; --panel: #161c24; --tinta: #eef2f6; --tenue: #9aa6b2; --borde: #2a333e; --acento: #ef8a23; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { background: var(--fondo); }
+  body { margin: 0; min-height: 100vh; min-height: 100dvh; display: grid; place-items: center; color: var(--tinta);
+    font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  /* el ancho se limita también por el alto de la ventana: el video completo y sus controles caben sin desplazarse */
+  main { width: min(100%, 1500px, max(520px, calc((100vh - 170px) * 16 / 9))); padding: 20px 16px 24px; }
+  h1 { margin: 0 0 14px; font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; letter-spacing: .08em; }
+  .marco { position: relative; aspect-ratio: 16 / 9; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, .5); }
+  video { display: block; width: 100%; height: 100%; background: #000; }
+  .sonido { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px 0 12px;
+    border: 1px solid rgba(255, 255, 255, .4); background: rgba(13, 17, 22, .8); color: #fff; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .sonido:hover { background: rgba(13, 17, 22, .95); }
+  .sonido svg { width: 20px; height: 20px; flex: none; }
+  .barra { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; margin-top: 14px; }
+  .calidad { display: inline-flex; align-items: center; gap: 10px; }
+  .calidad > span { color: var(--tenue); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+  .opciones { display: inline-flex; padding: 3px; border: 1px solid var(--borde); border-radius: 999px; }
+  button { appearance: none; min-height: 38px; padding: 0 18px; border: 0; border-radius: 999px; background: transparent; color: var(--tinta);
+    font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+  button[aria-pressed="true"] { background: var(--acento); color: #15202b; }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+  .descarga { color: var(--tenue); font-size: 14px; text-underline-offset: 3px; }
+  .descarga:hover { color: var(--tinta); }
+  #aviso { margin: 12px 0 0; padding: 10px 14px; border-left: 3px solid var(--acento); border-radius: 0 8px 8px 0; background: var(--panel); font-size: 14px; }
+  @media (max-width: 560px) { main { padding: 14px 10px 20px; } .marco { border-radius: 8px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>ANIMACIÓN 4D</h1>
+  <div class="marco">
+    <video id="v" controls playsinline preload="auto" poster="preview.jpg" src="https://github.com/Dominic-Soto/ANIMACION-4D/releases/download/v1.0/Office-Expansion-4D-Video-4K.mp4"></video>
+    <button type="button" id="bSonido" class="sonido" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+      Activar sonido · Sound on
+    </button>
+  </div>
+  <div class="barra">
+    <div class="calidad">
+      <span id="rotCalidad">Calidad</span>
+      <div class="opciones" role="group" aria-labelledby="rotCalidad">
+        <button type="button" id="b4K" aria-pressed="true" title="3840 × 2160 · necesita una conexión rápida">4K</button>
+        <button type="button" id="bHD" aria-pressed="false" title="1920 × 1080 · para conexiones lentas">HD</button>
+      </div>
+    </div>
+    <a class="descarga" href="https://github.com/Dominic-Soto/ANIMACION-4D/releases/download/v1.0/Office-Expansion-4D-Video-4K.mp4">Descargar en 4K · Download (636 MB)</a>
+  </div>
+  <p id="aviso" role="status" hidden></p>
+</main>
+<script>
+(() => {
+  // Reproductor del video. Por defecto se reproduce el 4K, que se lee del archivo publicado en el repositorio; el HD (1080p)
+  // se sirve desde esta misma página y entra solo si el navegador no puede con el 4K.
+  const v = document.getElementById('v'), aviso = document.getElementById('aviso');
+  const boton = { uhd: document.getElementById('b4K'), hd: document.getElementById('bHD') };
+  const FUENTE = {
+    uhd: 'https://github.com/Dominic-Soto/ANIMACION-4D/releases/download/v1.0/Office-Expansion-4D-Video-4K.mp4',
+    hd: 'video/Office-Expansion-4D-1080p.mp4'
+  };
+  const bSonido = document.getElementById('bSonido');
+  let calidad = 'uhd', pend = null, reintentos = 0, espera0 = 0, esperaTotal = 0, sugerido = false;
+  let quiere = true;                                   // ¿debe estar reproduciéndose? (la página arranca sola al abrirse)
+  const decir = (texto) => { aviso.textContent = texto || ''; aviso.hidden = !texto; };
+  const marcar = () => { for (const k in boton) boton[k].setAttribute('aria-pressed', String(k === calidad)); };
+  v.addEventListener('play', () => { quiere = true; });
+  v.addEventListener('pause', () => { quiere = false; });
+
+  // Reproduce. Los navegadores no dejan arrancar con sonido sin un clic previo en la página: en ese caso arranca en silencio
+  // y aparece el botón para activar el sonido.
+  async function reproducir() {
+    try { await v.play(); return; }
+    catch (e) { if (!e || e.name !== 'NotAllowedError' || v.muted) return; }     // otras causas las resuelven sus propios manejadores
+    v.muted = true;
+    try { await v.play(); bSonido.hidden = false; }
+    catch (e) { v.muted = false; quiere = false; }      // ni en silencio (p. ej. ahorro de batería): queda el botón de reproducir
+  }
+  bSonido.addEventListener('click', () => { v.muted = false; if (v.volume === 0) v.volume = 1; bSonido.hidden = true; if (v.paused && !v.ended) v.play().catch(() => {}); });
+  v.addEventListener('volumechange', () => { if (!v.muted && v.volume > 0) bSonido.hidden = true; });
+
+  // cambia de calidad conservando el punto del video y si estaba reproduciéndose
+  function usar(q, p) {
+    p = p || { t: v.currentTime || 0, seguir: quiere && !v.ended };
+    calidad = q; marcar();
+    pend = (p.t > 0.2 || p.seguir) ? p : null;
+    espera0 = 0; esperaTotal = 0;
+    v.src = FUENTE[q]; v.load();
+  }
+  v.addEventListener('loadedmetadata', () => {
+    const p = pend; pend = null;
+    if (!p) return;
+    if (p.t > 0.2 && isFinite(v.duration)) v.currentTime = Math.min(p.t, Math.max(0, v.duration - 0.3));
+    if (p.seguir) reproducir();
+  });
+  boton.hd.addEventListener('click', () => { if (calidad !== 'hd') { decir(''); usar('hd'); } });
+  boton.uhd.addEventListener('click', () => { if (calidad !== 'uhd') { decir(''); reintentos = 0; sugerido = false; usar('uhd'); } });
+
+  v.addEventListener('error', () => {
+    if (!v.error) return;
+    const p = pend || { t: v.currentTime || 0, seguir: quiere && !v.ended };
+    if (calidad === 'uhd') {
+      // el enlace firmado del 4K caduca a los 40 minutos: si falla a medio video se pide otra vez antes de bajar a HD
+      if (reintentos < 1 && p.t > 0.5) { reintentos++; usar('uhd', p); return; }
+      decir('El 4K no se pudo reproducir en este navegador; sigue en HD. · 4K is not available in this browser; continuing in HD.');
+      usar('hd', p);
+    } else {
+      decir('No se pudo cargar el video. Recarga la página o usa el enlace de descarga. · The video could not be loaded. Reload the page or use the download link.');
+    }
+  });
+
+  // si el 4K se detiene a cargar varias veces, se sugiere HD
+  v.addEventListener('waiting', () => { if (!v.seeking && !espera0) espera0 = performance.now(); });
+  v.addEventListener('playing', () => {
+    if (!espera0) return;
+    esperaTotal += performance.now() - espera0; espera0 = 0;
+    if (calidad === 'uhd' && esperaTotal > 6000 && !sugerido) { sugerido = true; decir('Si el 4K se detiene a cargar, cambia a HD. · If 4K keeps buffering, switch to HD.'); }
+  });
+  v.addEventListener('pause', () => { espera0 = 0; });
+  v.addEventListener('playing', () => v.removeAttribute('poster'), { once: true });
+
+  // arranque directo al abrir el enlace (con ?silencio en la dirección se fuerza el arranque sin sonido)
+  if (new URLSearchParams(location.search).has('silencio')) v.muted = true, v.play().then(() => { bSonido.hidden = false; }).catch(() => { v.muted = false; quiere = false; });
+  else reproducir();
+})();
+</script>
+</body>
+</html>
